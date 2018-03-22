@@ -1,6 +1,31 @@
 # AXSUtils
 A Series of MATLAB scripts for use with VT-SAXS and VT-WAXS data
 
+# Usage
+
+## AXSwaterfall
+Used for plotting VT-SAXS and VT-WAXS data in 3 dimensions.
+
+Store q values in a numeric matrix named q with dimentions [X &times; 1]
+
+Store temperature values in a numeric matrix named temp. [Y &times; 1]
+
+Store results in a numeric matrix named results. [X &times; Y] Use `.'` at the end of the variable name if the dimensions are incorrect.
+
+```matlab
+w = waterfall(q,temp,results.');
+```
+The colour setup is based on a cold-hot-cold ramp and goes from Blue-Red-Blue this can be altered by adjusting the RGB values in the matrix.
+
+```matlab
+cmap(1,:) = [0 0 1];   %// colour first row - Blue
+cmap(2,:) = [1 0 0];   %// colour 25th row - Red
+cmap(3,:) = [0 0 1];   %// colour 50th row - Blue
+```
+
+## AXSplot
+
+
 
 # License
 
