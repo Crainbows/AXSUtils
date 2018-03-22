@@ -42,22 +42,22 @@ fig.Color = 'w';
 
 w = waterfall(q,temp,results.');
 
-% Setting colors along the Y axis
+% Setting colours along the Y axis
 w.CData = repmat(temp,1,length(w.CData))';
 
-cmap(1,:) = [0 0 1];   %// color first row - Blue
-cmap(2,:) = [1 0 0];   %// color 25th row - Red
-cmap(3,:) = [0 0 1];   %// color 50th row - Blue
+cmap(1,:) = [0 0 1];   %// colour first row - Blue
+cmap(2,:) = [1 0 0];   %// colour 25th row - Red
+cmap(3,:) = [0 0 1];   %// colour 50th row - Blue
 
 [X,Y] = meshgrid([1:3],[1:50]);  %// mesh of indices
 
 cmap = interp2(X([1,25,50],:),Y([1,25,50],:),cmap,X,Y); %// interpolate colormap
 
-% cmap(1,:) = [0 0 1];   %// color first row - Blue
-% cmap(2,:) = [0.698039216 0.705882353 0];   %// color 25th row - Yellow
-% cmap(3,:) = [1 0 0];   %// color 50th row - Red
-% cmap(4,:) = [0.698039216 0.705882353 0];   %// color 75th row - Yellow
-% cmap(5,:) = [0 0 1];   %// color 100th row - Blue
+% cmap(1,:) = [0 0 1];   %// colour first row - Blue
+% cmap(2,:) = [0.698039216 0.705882353 0];   %// colour 25th row - Yellow
+% cmap(3,:) = [1 0 0];   %// colour 50th row - Red
+% cmap(4,:) = [0.698039216 0.705882353 0];   %// colour 75th row - Yellow
+% cmap(5,:) = [0 0 1];   %// colour 100th row - Blue
 % 
 % [X,Y] = meshgrid([1:3],[1:100]);  %// mesh of indices
 % 
@@ -92,15 +92,15 @@ ax.FontSize = 16;
 
 % Setting axis Labels
 % x-axis label adjusted right to match centre of axis
-% xlabel('q (Angstoms)')%, 'Position', [1 -0.2729 -4.7617]) 
+xlabel('q (Å^{-1})');
 % y-axis label adjusted
-% ylabel('Temperature (\circC)')%,'Position',[20000 20 5]);
-% zlabel('Relative Intensity') % y-axis label
+ylabel('Temperature (\circC)')%,'Position',[20000 20 5]);
+zlabel('Relative Intensity') % y-axis label
 
 
 % Camera modifications
 % set(gca,'CameraViewAngle',8);
-view([25 30])
+view([25 30]);
 % camzoom(0.8);
 
 
