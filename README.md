@@ -22,6 +22,18 @@ cmap(1,:) = [0 0 1];   %// colour first row - Blue
 cmap(2,:) = [1 0 0];   %// colour 25th row - Red
 cmap(3,:) = [0 0 1];   %// colour 50th row - Blue
 ```
+A limitation of YLim is that it can't account for cold-hot-cold ramps. In this instance we just ensure the values cover an interger range that matches the initial temperature. In order to correctly label the axes we simply use Ytick and Yticklabels.
+```matlab
+yticks([-60 5 70]); % Ticks at the start middle and end of the YLim defined earlier.
+yticklabels({'-60', '70', '-60'}); % Tick labels. Quantity must match number of ticks declared.
+```
+Setting the camera view is based on two variables which are angles around the centre of all axes.
+```matlab
+view([25 30])
+```
+
+High quality images can be produced using the print options where DPI can be defined. Alternatively standard quality can be yieldedusing the saveas funtions. These have already been predefined but can be adjusted where needed.
+
 
 ## AXSplot
 
