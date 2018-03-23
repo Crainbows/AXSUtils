@@ -8,9 +8,24 @@ Used for plotting VT-SAXS and VT-WAXS data in 3 dimensions.
 
 Store q values in a numeric matrix named q with dimentions [X &times; 1]
 
-Store temperature values in a numeric matrix named temp. [Y &times; 1]
+Store temperature values in a numeric matrix named temperature. [Y &times; 1] This can be achieved by creating a numeric array from the lowest value to the highest as shown below.
+Cool-Heat cycle
+```matlab
+temperature = -60:(130/76):70 % Lowest to highest in increments of (temperature range over number of measurements)
+temperature = temp.' % Transpose array
+```
+Cool-Heat-Cool Cycle
+```matlab
+temperature = -60:(260/156):70 % Lowest to highest in increments of (2 &times; temperature range over number of measurements)
+temperature = temp.' % Transpose array
+temperature = vertcat(temperature, sort(temperature, 'descend')) % Append inverted array
+```
 
 Store results in a numeric matrix named results. [X &times; Y] Use `.'` at the end of the variable name if the dimensions are incorrect.
+
+Once the variables are decleared call AXSwaterfall from the MATLAB command line.
+
+### Advanced Changes
 
 ```matlab
 w = waterfall(q,temp,results.');
@@ -29,15 +44,15 @@ yticklabels({'-60', '70', '-60'}); % Tick labels. Quantity must match number of 
 ```
 Setting the camera view is based on two variables which are angles around the centre of all axes.
 ```matlab
-view([25 30])
+view([25 30]);
 ```
 
-High quality images can be produced using the print options where DPI can be defined. Alternatively standard quality can be yieldedusing the saveas funtions. These have already been predefined but can be adjusted where needed.
+High quality images can be produced using the print options where DPI can be defined. Alternatively standard quality can be yielded using the saveas funtions. These have already been predefined but can be adjusted where needed.
 
 
 ## AXSplot
 
-
+TODO
 
 # License
 
