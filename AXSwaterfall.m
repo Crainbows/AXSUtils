@@ -23,10 +23,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-Script to make waterfall plot for temperature trend DLS
-Import size data into vector particleSize (typically 69x1 double)
-Import temperature data into vector temp 1x(((maxtemp - mintemp)/gradient)+1) double
-Import Intensity data into matrix with matching dimentions (multi measurment data may need to be reduced by averaging and removing outliers)
+Script to make waterfall plot for temperature trend VT-SAXS and VT-WAXS
+Import q or theta data into vector q
+Import Intensity data into matrix
+Import temperature data into vector temperature
 
 
 %}
@@ -36,14 +36,14 @@ figure;
 fig = gcf;
 fig.Color = 'w';
 
-% xaxis - q - Vector matching columns of results
-% yxaxis - Temperature - Vector matching rows of results
+% xaxis - q - Vector matching columns of intensity
+% yxaxis - Temperature - Vector matching rows of intensity
 % zaxis - Intensity - matrix matching dimentions of size and temperature (use .' to transpose)
 
-w = waterfall(q,temp,results.');
+w = waterfall(q,temperature,intensity.');
 
 % Setting colours along the Y axis
-w.CData = repmat(temp,1,length(w.CData))';
+w.CData = repmat(temperature,1,length(w.CData))';
 
 cmap(1,:) = [0 0 1];   %// colour first row - Blue
 cmap(2,:) = [1 0 0];   %// colour 25th row - Red
@@ -92,17 +92,21 @@ ax.FontSize = 16;
 
 % Setting axis Labels
 % x-axis label adjusted right to match centre of axis
-xlabel('q (Å^{-1})');
+
+angstrom = char(197);
+xlabel(['q (' angstrom '^{-1})']);
+clearvars angstrom;
+
 % y-axis label adjusted
-ylabel('Temperature (\circC)')%,'Position',[20000 20 5]);
-zlabel('Relative Intensity') % y-axis label
+ylabel('Temperature (\circC)', 'Rotation', 49,'Position',[0.37 -80 0]);
+zlabel('Relative Intensity'); % y-axis label
 
 
 % Camera modifications
 % set(gca,'CameraViewAngle',8);
 view([25 30]);
 % camzoom(0.8);
-
+set(gca,'OuterPosition',[0 0.001 0.93 1.3]);
 
 % High resolution images 600 dpi
 
